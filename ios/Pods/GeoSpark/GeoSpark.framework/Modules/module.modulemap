@@ -1,0 +1,11 @@
+framework module GeoSpark {
+  umbrella header "GeoSpark.h"
+
+  export *
+  module * { export * }
+}
+
+module GeoSpark.Swift {
+    header "GeoSpark-Swift.h"
+    requires objc
+}

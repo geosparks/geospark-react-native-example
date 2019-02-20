@@ -1,0 +1,613 @@
+{
+  "project_info": {
+    "project_number": "736991927112",
+    "firebase_url": "https://geospark-d0607.firebaseio.com",
+    "project_id": "geospark-d0607",
+    "storage_bucket": "geospark-d0607.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:07850d6182b244e3",
+        "android_client_info": {
+          "package_name": "com.example.googlelocationchecking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:3f4f44faafb4394c",
+        "android_client_info": {
+          "package_name": "com.geosaprkmodule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:c3aae4e647c5d8b5",
+        "android_client_info": {
+          "package_name": "com.geospark.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:5909cc370f50a4d8",
+        "android_client_info": {
+          "package_name": "com.geospark.firetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:673f829bb5655f07",
+        "android_client_info": {
+          "package_name": "com.geospark.geosparksdk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:a163c7b2d93135a4",
+        "android_client_info": {
+          "package_name": "com.geospark.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:98e9aa988ef9f180",
+        "android_client_info": {
+          "package_name": "com.geospark.notifyby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:2d02a175aaf76a32",
+        "android_client_info": {
+          "package_name": "com.geospark.sujithandroidtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:396f44e96f0e0891",
+        "android_client_info": {
+          "package_name": "com.geospark.trivagotestapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-vo124vk36mkipavq754l7ke4deamhlpi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geospark.trivagotestapp",
+            "certificate_hash": "e49983d5f75e659618c5b9efda4afa0cc8fb6d18"
+          }
+        },
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:9a03750072bea23e",
+        "android_client_info": {
+          "package_name": "com.geosparksdk.androidexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:fd30122787f330dd",
+        "android_client_info": {
+          "package_name": "com.google.example.maps.roadsapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:f35a3c938c17c0c1",
+        "android_client_info": {
+          "package_name": "com.mymod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:7d8259be7838a820",
+        "android_client_info": {
+          "package_name": "com.mymodule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:da6d1d8886723a80",
+        "android_client_info": {
+          "package_name": "com.sample.geosparkapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:79b9bf126e09c73d",
+        "android_client_info": {
+          "package_name": "com.storyboard.exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:28cc48cf41d0ff6c",
+        "android_client_info": {
+          "package_name": "com.storyboard.geospark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:d8c58f3bbc8180eb",
+        "android_client_info": {
+          "package_name": "com.storyboard.geosparkapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:ff0ff848ff4b80e6",
+        "android_client_info": {
+          "package_name": "com.twolinessoftware.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736991927112:android:ec881165460053c3",
+        "android_client_info": {
+          "package_name": "com.villoren.android.kalmanlocationmanager.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736991927112-qi5gv8r40b90iivitftv5f6h9ecdodp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjNnggWD8BeAi3NCuIIRL35cbPIvMiWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
