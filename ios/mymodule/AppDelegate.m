@@ -18,7 +18,7 @@
 {
   NSURL *jsCodeLocation;
   
-  [GeoSpark intialize:@"148f5f521bccb7741afe80b1b2fc2f539f96626f8920b5798da4c32144bf21b6"];
+  [GeoSpark intialize:@"YOUR-PUBLISHABLE-KEY"];
   [GeoSpark trackLocationInAppState:[[NSArray alloc] initWithObjects:GSAppState.AlwaysOn, nil]];
   GeoSpark.delegate = self;
   
