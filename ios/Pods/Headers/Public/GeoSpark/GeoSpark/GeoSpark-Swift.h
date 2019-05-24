@@ -1,1 +1,0 @@
-../../../../GeoSpark/GeoSpark.framework/Headers/GeoSpark-Swift.h
