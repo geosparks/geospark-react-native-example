@@ -21,8 +21,11 @@ npm install -g react-native-cli
 npm install react-native-geospark --save
 react-native link react-native-geospark
 ```
-
-**Step 3: Run Android App**
+**Step 3: Initialize SDK**
+```
+Initialize the SDK with your PublishKey
+```
+**Step 4: Run Android**
 ```
 react-native run-android
 ```
