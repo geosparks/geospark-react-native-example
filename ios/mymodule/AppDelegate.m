@@ -54,6 +54,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
   return YES;
 }
 
@@ -67,6 +68,15 @@
 {
   NSLog(@"deviceToken: %@", deviceToken);
   [GeoSpark setDeviceToken:deviceToken];
+}
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+  NSLog(@"willPresentNotification %@", notification);
+  completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
+  [GeoSpark notificationOpenedHandler:response];
+  completionHandler();
 }
 
 @end
