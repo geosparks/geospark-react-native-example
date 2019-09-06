@@ -50,5 +50,6 @@ public class MainApplication extends Application implements ReactApplication {
         FirebaseApp.initializeApp(this);
         SoLoader.init(this, /* native exopackage */ false);
         GeoSpark.initialize(this, "YOUR-PUBLISHABLE-KEY");
+        
     }
 }
