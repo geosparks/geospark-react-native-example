@@ -16,13 +16,7 @@ or
 npm install -g react-native-cli
 ```
 
-**Step 2: Install SDK**
-```bash
-npm install react-native-geospark --save
-
-react-native link react-native-geospark
-```
-**Step 3: Initialize SDK**
+**Step 2: Initialize SDK**
 ```
 In onCreate method of your Application class add your publishable key.
 
@@ -34,7 +28,7 @@ public void onCreate() {
 }  
 
 ```
-**Step 4: Run Android**
+**Step 3: Run Android**
 ```
 react-native run-android
 ```
