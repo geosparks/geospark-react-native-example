@@ -14,7 +14,6 @@ import {
   ScrollView
 } from "react-native";
 import GeoSpark from "react-native-geospark";
-// import GeoSpark from "react-native-geospark";
 import Toast, { DURATION } from "react-native-easy-toast";
 import { Header, Button, Input, Card, Divider } from "react-native-elements";
 
@@ -97,7 +96,6 @@ export default class Trip extends Component {
           isFetching: false
         });
         that.refs.toast.show("Trip Failed!! Please Start Traking!");
-        // do something on error
       }
     );
   }
@@ -138,37 +136,6 @@ export default class Trip extends Component {
     return (
       <View>
         <View style={styles.container}>
-          {/* <TextInput
-            placeholder="Enter description"
-            placeholderTextColor="grey"
-            underlineColorAndroid="transparent"
-            style={styles.input}
-            onChange={this.userDescriptionChange.bind(this)}
-            value={description}
-          /> */}
-
-          {/* <View style={styles.tripContainer}>
-            <View style={styles.trakingContainer}>
-              <View style={styles.trakingButton}>
-                <TouchableHighlight>
-                  <Button
-                    title="Start Trip"
-                    onPress={this.onStartTrip.bind(this)}
-                  />
-                </TouchableHighlight>
-              </View>
-              <View style={styles.trakingButton}>
-                <TouchableHighlight>
-                  <Button
-                    title="Active Trips"
-                    disabled={isActiveTrip}
-                    onPress={this.onGetActiveTrips.bind(this)}
-                  />
-                </TouchableHighlight>
-              </View>
-            </View>
-          </View> */}
-
           {isFetching && (
             <View style={[styles.ActivityContainer, styles.horizontal]}>
               <ActivityIndicator size="large" color="#0000ff" />
@@ -183,8 +150,8 @@ export default class Trip extends Component {
                   renderItem={({ item }) => (
                     <View key={item.tripStartedAt} style={styles.trip}>
                       <View>
-                        <Text>{item.tripId}</Text>
-                        <Text>{item.createdAt}</Text>
+                        <Text style={styles.itemText}>TripId: {item.tripId}</Text> 
+                        <Text style={styles.itemText}>{item.createdAt}</Text>
                       </View>
                       <View style={styles.button}>
                         <TouchableHighlight>
@@ -217,7 +184,6 @@ export default class Trip extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 5
-    // backgroundColor: "#f2f2f2"
   },
   trakingContainer: {
     flex: 1,
@@ -225,23 +191,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   ActivityContainer: {
+    marginTop: 20,
     flex: 1,
     justifyContent: "center",
-    // backgroundColor: "#f2f2f2",
     zIndex: 1
   },
   horizontal: {
     flexDirection: "row",
     justifyContent: "space-around",
     flex: 1
-    // padding: 10
   },
   trakingButton: {
-    width: width * 0.45,
     height: 50
   },
   titleLabel: {
-    fontSize: 18,
+    fontSize: 1,
     fontWeight: "bold",
     color: "black"
   },
@@ -257,35 +221,36 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     margin: 10
   },
-  // TripsListContainer: {
-  //   marginTop: 55
-  //   // height: 200
-  // },
   trip: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     // width: width * 0.9,
-
     backgroundColor: "#f2f2f2",
-    // paddingTop: 10,
-    padding: 5,
-    marginTop: 5,
+    paddingTop:10,
+    paddingStart:6,
+    paddingEnd:6,
+    paddingBottom:5,
+    marginTop: 10,
     borderColor: "black",
-    borderWidth: 1
-    // marginTop: 10
+    borderWidth: 0.5
+  },
+  itemText: {
+    fontSize: 14,
+    color: "black",
+    marginBottom:5
   },
   tripInner: {
-    margin: 15,
+    margin: 5,
     height: height * 0.1
   },
   button: {
-    marginLeft: 30,
+    marginLeft: 10,
     width: width * 0.3,
     height: 35
   },
   contentContainer: {
-    marginTop: 55,
+    marginTop: 30,
     maxHeight: height * 0.6
   }
 });

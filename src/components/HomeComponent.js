@@ -122,19 +122,6 @@ export default class Home extends Component {
         },
         error => {}
       );
-
-      // GeoSpark.isMockEnabledInDevice(
-      //   status => {
-      //     console.log(status);
-
-      //     if (status == "ENABLED") {
-      //       this.setState({
-      //         isMockEnabled: true
-      //       });
-      //     }
-      //   },
-      //   error => {}
-      // );
     }
 
     this.setState({
@@ -163,11 +150,20 @@ export default class Home extends Component {
     GeoSpark.createUser(
       this.state.description,
       async success => {
-        this.setState({
-          isUserCreated: true,
-          isFetching: false
-        });
-
+        GeoSpark.toggleEvents(true,true,true,async success => {
+          this.setState({
+            isUserCreated: true,
+            isFetching: false
+          });
+         },
+         error => {
+          console.log(error);
+          that.refs.toast.show("User Created Failed!");
+          this.setState({
+            isFetching: false
+          });
+         }
+        )
         const userID = success.userId;
         await AsyncStorage.setItem("geospark_userId", userID);
         await AsyncStorage.removeItem("geospark_description");
@@ -286,7 +282,6 @@ export default class Home extends Component {
         if (platforms === "ios") {
           GeoSpark.checkMotionPermission(async status => {
             console.log(status);
-
             if (status == "GRANTED") {
               GeoSpark.startTracking(this);
               await AsyncStorage.setItem("geospark_traking", "yes");
@@ -301,7 +296,6 @@ export default class Home extends Component {
         } else {
           GeoSpark.checkLocationServices(async status => {
             console.log(status);
-
             if (status == "ENABLED") {
               GeoSpark.startTracking(this);
               this.setState({
@@ -334,7 +328,7 @@ export default class Home extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.logout(
+   GeoSpark.logout(
       async success => {
         this.setState({
           isUserCreated: false,
@@ -351,8 +345,7 @@ export default class Home extends Component {
           isFetching: false
         });
         that.refs.toast.show("User Logged out Failed!");
-      }
-    );
+      });
   }
 
   static navigationOptions = {
@@ -385,7 +378,7 @@ export default class Home extends Component {
 
         <ScrollView>
           <View style={styles.container}>
-            {/* <Text style={styles.titleLabel}>OAuth & User </Text> */}
+            <Text style={styles.titleLabel}>User</Text>
             <TextInput
               placeholder="Enter description"
               placeholderTextColor="grey"
@@ -430,13 +423,15 @@ export default class Home extends Component {
 
               {/* <Text>{isUserCreated ? "user" : "no user"}</Text> */}
 
+              <View style={styles.logoutContainer}>
               <TouchableHighlight>
                 <Button
-                  title="Log In"
+                  title="Get User"
                   disabled={isUserCreated}
                   onPress={this.onLoginUser.bind(this)}
                 />
               </TouchableHighlight>
+            </View>
             </View>
 
             <View style={styles.permissionContainer}>
@@ -497,10 +492,9 @@ export default class Home extends Component {
               </View>
             </View>
 
-            <View style={styles.tripContainer}>
-              <Text style={styles.titleLabel}>Trip & Geofence </Text>
-              <View style={styles.trakingContainer}>
-                <View style={styles.trakingButton}>
+            <View style={styles.logoutContainer}>
+              <Text style={styles.titleLabel}>Trip</Text>
+                <View style={styles.logoutContainer}>
                   <TouchableHighlight>
                     <Button
                       title="Trip"
@@ -509,57 +503,36 @@ export default class Home extends Component {
                     />
                   </TouchableHighlight>
                 </View>
-                <View style={styles.trakingButton}>
-                  <TouchableHighlight>
-                    <Button title="Geofence" disabled={true} />
-                  </TouchableHighlight>
-                </View>
-              </View>
             </View>
 
             {platforms !== "ios" && (
-              <View style={styles.tripContainer}>
+              <View style={styles.logoutContainer}>
                 <Text style={styles.titleLabel}>Battery Optimization</Text>
-                <View style={styles.trakingContainer}>
-                  <View style={styles.trakingButton}>
-                    <TouchableHighlight>
-                      <Button
-                        title={isBatteryOptimization ? "Enable" : "Disable"}
-                        disabled="true"
-                      />
-                    </TouchableHighlight>
+                <View style={styles.logoutContainer}>
+                  <TouchableHighlight>
+                  <Button
+                    title={isBatteryOptimization ? "Enable" : "Disable"}
+                    disabled="true"
+                  />
+                  </TouchableHighlight>
                   </View>
-                </View>
               </View>
             )}
 
-            {platforms !== "ios" && (
-              <View style={styles.tripContainer}>
-                <Text style={styles.titleLabel}>Mock Optimization</Text>
-                <View style={styles.trakingContainer}>
-                  <View style={styles.trakingButton}>
+              <View style={styles.logoutContainer}>
+                <Text style={styles.titleLabel}>Logout</Text>
+                  <View style={styles.logoutContainer}>
                     <TouchableHighlight>
-                      <Button
-                        title={isMockEnabled ? "Enable" : "Disable"}
-                        disabled="true"
-                      />
+                    <Button
+                    title="Logout"
+                    disabled={!isUserCreated}
+                    onPress={this.onLogout.bind(this)}
+                    />
                     </TouchableHighlight>
-                  </View>
                 </View>
-              </View>
-            )}
-
-            <View style={styles.logoutContainer}>
-              <TouchableHighlight>
-                <Button
-                  title="Logout"
-                  disabled={!isUserCreated}
-                  onPress={this.onLogout.bind(this)}
-                />
-              </TouchableHighlight>
+              </View>        
+              <Toast ref="toast" />
             </View>
-            <Toast ref="toast" />
-          </View>
         </ScrollView>
       </View>
     );
@@ -570,9 +543,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 5
   },
-  // loginContainer: {
-  //   marginTop: 45
-  // },
   ActivityContainer: {
     flex: 1,
     justifyContent: "center",
@@ -585,9 +555,6 @@ const styles = StyleSheet.create({
     flex: 1
     // padding: 10
   },
-  // trackContainer: {
-  //   marginTop: 45
-  // },
   trakingContainer: {
     flex: 1,
     flexDirection: "row",
@@ -603,9 +570,6 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 5
   },
-  // tripContainer: {
-  //   marginTop: 45
-  // },
   permissionContainer: {
     marginTop: 5
   },
@@ -619,6 +583,11 @@ const styles = StyleSheet.create({
     margin: 10
   },
   logoutContainer: {
-    marginTop: 20
+    flex: 1,
+    marginTop: 5,
+    marginLeft:2.5,
+    marginRight:2.5,
+    marginBottom:5,
+    justifyContent: "space-around"
   }
 });
