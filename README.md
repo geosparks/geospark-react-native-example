@@ -13,6 +13,13 @@ or
 ```
 npm install -g react-native-cli
 ```
+ then after this do a  react-native install
+
+   ```bash
+   npm install react-native-geospark --save
+   react-native link react-native-geospark
+   ```
+
 
 ### Run Android App
 ```
