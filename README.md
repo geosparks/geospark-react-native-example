@@ -1,6 +1,8 @@
 # geospark-react-native-example
 
-## Quick start
+## Quick start Android 
+
+**Step 1:**
 ```
  npm install 
 ```
@@ -9,16 +11,27 @@ or
  yarn add
 ```
 
-### Install React Native CLI
+**Install React Native CLI**
 ```
 npm install -g react-native-cli
 ```
 
-### Run Android App
+**Step 2: Install SDK**
+```bash
+npm install react-native-geospark --save
+react-native link react-native-geospark
+```
+**Step 3: Initialize SDK**
+```
+Initialize the SDK with your PublishKey
+```
+**Step 4: Run Android**
 ```
 react-native run-android
 ```
-### Setup and Run iOS App
+
+
+## Quick start iOS
 
 [^reference link]: https://docs.geospark.co/react-native/quickstart
 
@@ -405,7 +418,13 @@ react-native run-android
      NSLog(@"deviceToken: %@", deviceToken);
      [GeoSpark setDeviceToken:deviceToken];
    }
-   
+   -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+   }
+   -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
+       [GeoSpark notificationOpenedHandler:response];
+        completionHandler();
+   }
    
    @end
    
