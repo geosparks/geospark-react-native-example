@@ -418,7 +418,13 @@ react-native run-android
      NSLog(@"deviceToken: %@", deviceToken);
      [GeoSpark setDeviceToken:deviceToken];
    }
-   
+   -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+   }
+   -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
+       [GeoSpark notificationOpenedHandler:response];
+        completionHandler();
+   }
    
    @end
    
