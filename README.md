@@ -1,6 +1,8 @@
 # geospark-react-native-example
 
-## Quick start
+## Quick start Android 
+
+**Step 1:**
 ```
  npm install 
 ```
@@ -9,23 +11,24 @@ or
  yarn add
 ```
 
-### Install React Native CLI
+**Install React Native CLI**
 ```
 npm install -g react-native-cli
 ```
- then after this do a  react-native install
 
-   ```bash
-   npm install react-native-geospark --save
-   react-native link react-native-geospark
-   ```
+**Step 2: Install SDK**
+```bash
+npm install react-native-geospark --save
+react-native link react-native-geospark
+```
 
-
-### Run Android App
+**Step 3: Run Android App**
 ```
 react-native run-android
 ```
-### Setup and Run iOS App
+
+
+## Quick start iOS
 
 [^reference link]: https://docs.geospark.co/react-native/quickstart
 
