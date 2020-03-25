@@ -47,6 +47,8 @@ export default class Home extends Component {
       isFetching: false,
       platforms: "ios",
       isLocationPermission: false,
+      isActivityPermission: false,
+      isBackgroundPermission: false,
       isMotionService: false,
       isBatteryOptimization: false,
       isMockEnabled: false
@@ -58,7 +60,7 @@ export default class Home extends Component {
     const userId = await AsyncStorage.getItem("geospark_userId");
     const traking = await AsyncStorage.getItem("geospark_traking");
     const userDescription = await AsyncStorage.getItem("geospark_description");
-
+  
     if (userId !== null) {
       const trakingStarted = traking === "yes" ? true : false;
       this.setState({
@@ -97,10 +99,33 @@ export default class Home extends Component {
     } else {
       GeoSpark.disableBatteryOptimization(this);
 
+      GeoSpark.checkMotionPermission(
+        status => {
+          console.log(status);
+          if (status == "ENABLED") {
+            this.setState({
+              isActivityPermission: true
+            });
+          }
+        },
+        error => {}
+      );
+
+      GeoSpark.checkBackgroundLocationPermission(
+        status => {
+          console.log(status);
+          if (status == "ENABLED") {
+            this.setState({
+              isBackgroundPermission: true
+            });
+          }
+        },
+        error => {}
+      );
+
       GeoSpark.checkLocationServices(
         status => {
           console.log(status);
-
           if (status == "ENABLED") {
             this.setState({
               isMotionService: true
@@ -244,12 +269,35 @@ export default class Home extends Component {
     });
   }
 
+  onRequestActivity() {
+    GeoSpark.checkMotionPermission(status => {
+      if (status == "GRANTED") {
+        this.setState({
+          isActivityPermission: true
+        });
+      } else {
+        GeoSpark.requestMotionPermission();
+      }
+    });
+  }
+
+  onRequestBackgroundPermission() {
+    GeoSpark.checkBackgroundLocationPermission(status => {
+      if (status == "GRANTED") {
+        this.setState({
+          isBackgroundPermission: true
+        });
+      } else {
+        GeoSpark.requestBackgroundLocationPermission();
+      }
+    });
+  }
+
   onRequestMotionORService() {
     const { platforms } = this.state;
     if (platforms === "ios") {
       GeoSpark.checkMotionPermission(async status => {
         console.log(status);
-
         if (status == "GRANTED") {
           this.setState({
             isMotionService: true
@@ -361,6 +409,8 @@ export default class Home extends Component {
       isFetching,
       platforms,
       isLocationPermission,
+      isActivityPermission,
+      isBackgroundPermission,
       isMotionService,
       isBatteryOptimization,
       isMockEnabled
@@ -456,6 +506,31 @@ export default class Home extends Component {
                       }
                       disabled={!isUserCreated || isMotionService}
                       onPress={this.onRequestMotionORService.bind(this)}
+                    />
+                  </TouchableHighlight>
+                </View>
+              </View>
+            </View>
+
+
+            <View style={styles.permissionContainer}>
+              <Text style={styles.titleLabel}>Android 10 Permission </Text>
+              <View style={styles.trakingContainer}>
+                <View style={styles.trakingButton}>
+                  <TouchableHighlight>
+                    <Button
+                      title="Activity Permission"
+                      disabled={!isUserCreated || isActivityPermission}
+                      onPress={this.onRequestActivity.bind(this)}
+                    />
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.trakingButton}>
+                  <TouchableHighlight>
+                    <Button
+                      title="Background Permission"
+                      disabled={!isUserCreated || isBackgroundPermission}
+                      onPress={this.onRequestBackgroundPermission.bind(this)}
                     />
                   </TouchableHighlight>
                 </View>

@@ -132,11 +132,6 @@ android {
         }
     }
     buildToolsVersion '28.0.3'
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
@@ -147,7 +142,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation 'com.facebook.react:react-native:+'
     // From node_modules
-    implementation 'com.geospark.android:geospark:2.1.1'
+    implementation 'com.geospark.android:geospark:2.2.5'
 }
 
 // Run this once to be able to run the application with BUCK
