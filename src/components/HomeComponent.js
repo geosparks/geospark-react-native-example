@@ -321,6 +321,17 @@ export default class Home extends Component {
     }
   }
 
+  onUpdateLocation() {
+    GeoSpark.updateCurrentLocationIos();
+  }
+
+  onGetLocation() {
+    GeoSpark.getCurrentLocationIos(
+      status => {
+        alert(status.latitude + " , " + status.longitude);
+      });
+  }
+
   onStartTraking() {
     let that = this;
     const { platforms } = this.state;
@@ -566,6 +577,35 @@ export default class Home extends Component {
                 </View>
               </View>
             </View>
+
+
+            {platforms === "ios" && (
+                  <View style={styles.trackContainer}>
+                  <Text style={styles.titleLabel}>Location </Text>
+                  <View style={styles.trakingContainer}>
+                    <View style={styles.trakingButton}>
+                      <TouchableHighlight>
+                        <Button
+                          title="Get Current Location"
+                          disabled={!isUserCreated}
+                          onPress={this.onGetLocation.bind(this)}
+                        />
+                      </TouchableHighlight>
+                    </View>
+                    <View style={styles.trakingButton}>
+                      <TouchableHighlight>
+                        <Button
+                          title="Update Location"
+                          disabled={!isUserCreated}
+                          onPress={this.onUpdateLocation.bind(this)}
+                        />
+                      </TouchableHighlight>
+                    </View>
+                  </View>
+                </View>
+            )}
+
+        
 
             <View style={styles.logoutContainer}>
               <Text style={styles.titleLabel}>Trip</Text>
