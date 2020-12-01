@@ -1,11 +1,13 @@
 package com.mymodule;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.geospark.lib.GeoSpark;
+import com.mymodule.service.GeoSparkForegroundService;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 public class MainActivity extends ReactActivity {
@@ -32,6 +34,12 @@ public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GeoSpark.notificationOpenedHandler(this, getIntent());
+        GeoSpark.notificationOpenedHandler(getIntent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startService(new Intent(this, GeoSparkForegroundService.class));
     }
 }

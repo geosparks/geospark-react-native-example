@@ -13,7 +13,7 @@ import {
   ActivityIndicator,
   ScrollView
 } from "react-native";
-import GeoSpark from "react-native-geospark";
+import GeoSpark from "react-native-geospark-test";
 import Toast, { DURATION } from "react-native-easy-toast";
 import { Header, Button, Input, Card, Divider } from "react-native-elements";
 

@@ -24,7 +24,7 @@ import {
   AsyncStorage,
   ScrollView
 } from "react-native";
-import GeoSpark from "react-native-geospark";
+import GeoSpark from "react-native-geospark-test";
 import Toast, { DURATION } from "react-native-easy-toast";
 
 const instructions = Platform.select({
@@ -175,10 +175,19 @@ export default class Home extends Component {
     GeoSpark.createUser(
       this.state.description,
       async success => {
-        GeoSpark.toggleEvents(true,true,true,async success => {
-          this.setState({
-            isUserCreated: true,
-            isFetching: false
+        GeoSpark.toggleEvents(true,true,true,true,async success => {
+          GeoSpark.toggleListener(true,true, async success => {
+            this.setState({
+              isUserCreated: true,
+              isFetching: false
+            });
+          },
+          error => {
+            console.log(error);
+            that.refs.toast.show("User Created Failed!");
+            this.setState({
+              isFetching: false
+            });
           });
          },
          error => {
@@ -270,13 +279,13 @@ export default class Home extends Component {
   }
 
   onRequestActivity() {
-    GeoSpark.checkMotionPermission(status => {
+    GeoSpark.checkLocationServices(status => {
       if (status == "GRANTED") {
         this.setState({
-          isActivityPermission: true
+          isMotionService: true
         });
       } else {
-        GeoSpark.requestMotionPermission();
+        GeoSpark.requestLocationServices();
       }
     });
   }
@@ -335,28 +344,19 @@ export default class Home extends Component {
   onStartTraking() {
     let that = this;
     const { platforms } = this.state;
-    GeoSpark.checkLocationPermission(status => {
+    GeoSpark.checkLocationPermission(async status => {
       console.log(status);
       if (status == "GRANTED") {
-        if (platforms === "ios") {
-          GeoSpark.checkMotionPermission(async status => {
-            console.log(status);
-            if (status == "GRANTED") {
-              GeoSpark.startTracking(this);
-              await AsyncStorage.setItem("geospark_traking", "yes");
-              this.setState({
-                isTrakingStarted: true
-              });
-              that.refs.toast.show("Tracking Started Successfully!");
-            } else {
-              GeoSpark.requestMotionPermission();
-            }
-          });
+        if (platforms === "android") {
+          GeoSpark.startTracking(this);
+          await AsyncStorage.setItem("geospark_traking", "yes");
+          this.setState({isTrakingStarted: true});
+          that.refs.toast.show("Tracking Started Successfully!");
         } else {
           GeoSpark.checkLocationServices(async status => {
             console.log(status);
             if (status == "ENABLED") {
-              GeoSpark.startTracking(this);
+              GeoSpark.startTrackingDistanceInterval(5,120,GeoSpark.DesiredAccuracy.HIGH);
               this.setState({
                 isTrakingStarted: true
               });
@@ -508,17 +508,7 @@ export default class Home extends Component {
                   </TouchableHighlight>
                 </View>
                 <View style={styles.trakingButton}>
-                  <TouchableHighlight>
-                    <Button
-                      title={
-                        platforms === "ios"
-                          ? "Request Motion"
-                          : "Request Service"
-                      }
-                      disabled={!isUserCreated || isMotionService}
-                      onPress={this.onRequestMotionORService.bind(this)}
-                    />
-                  </TouchableHighlight>
+                  
                 </View>
               </View>
             </View>
@@ -528,9 +518,9 @@ export default class Home extends Component {
               <Text style={styles.titleLabel}>Android 10 Permission </Text>
               <View style={styles.trakingContainer}>
                 <View style={styles.trakingButton}>
-                  <TouchableHighlight>
+                <TouchableHighlight>
                     <Button
-                      title="Activity Permission"
+                      title="Location services"
                       disabled={!isUserCreated || isActivityPermission}
                       onPress={this.onRequestActivity.bind(this)}
                     />

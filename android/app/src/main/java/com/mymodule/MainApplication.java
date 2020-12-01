@@ -2,6 +2,7 @@ package com.mymodule;
 
 import android.app.Application;
 
+
 import com.facebook.react.ReactApplication;
 import com.geospark.reactnative.RNGeoSparkPackage;
 import com.facebook.react.ReactNativeHost;
@@ -47,7 +48,7 @@ public class MainApplication extends Application implements ReactApplication {
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
-        GeoSpark.initialize(this, "YOUR-PUBLISHABLE-KEY");
+        GeoSpark.initialize(this, "148f5f521bccb7741afe80b1b2fc2f539f96626f8920b5798da4c32144bf21b6");
 
     }
 }
