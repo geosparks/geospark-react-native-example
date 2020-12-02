@@ -216,27 +216,7 @@ export default class Home extends Component {
 
   onSetDescription() {
     const { description } = this.state;
-    let that = this;
-    this.setState({
-      isFetching: true
-    });
-    GeoSpark.setDescription(
-      description,
-      async success => {
-        console.log(success);
-        await AsyncStorage.setItem("geospark_description", description);
-        that.refs.toast.show("User Updated Successfully!");
-        this.setState({
-          isFetching: false
-        });
-      },
-      error => {
-        that.refs.toast.show("User Updated Failed!");
-        this.setState({
-          isFetching: false
-        });
-      }
-    );
+    GeoSpark.setDescription(description);
   }
 
   onLoginUser() {
@@ -331,14 +311,29 @@ export default class Home extends Component {
   }
 
   onUpdateLocation() {
+    const { platforms } = this.state;
+    if (platforms === "android") {
     GeoSpark.updateCurrentLocationIos();
+    }else{
+      GeoSpark.updateCurrentLocation(GeoSpark.DesiredAccuracy.HIGH,300);
+    }
   }
 
   onGetLocation() {
+    const { platforms } = this.state;
+    if (platforms === "android") {
     GeoSpark.getCurrentLocationIos(
       status => {
         alert(status.latitude + " , " + status.longitude);
       });
+    }else{
+      GeoSpark.getCurrentLocation(GeoSpark.DesiredAccuracy.HIGH,300,
+        status => {
+          alert(status.latitude + " , " + status.longitude);
+        },error=> {
+          alert(error.code + " , " + error.message);
+        });
+    }
   }
 
   onStartTraking() {
@@ -404,6 +399,24 @@ export default class Home extends Component {
           isFetching: false
         });
         that.refs.toast.show("User Logged out Failed!");
+      });
+  }
+
+  createTrip() {
+    let that = this;
+    this.setState({
+      isFetching: true
+    });
+   GeoSpark.createTrip(false,
+      async success => {
+        this.setState({isFetching: false});
+        that.refs.toast.show("Trip created Successfully!");
+      },
+      error => {
+        this.setState({
+          isFetching: false
+        });
+        that.refs.toast.show("Trip created Failed!");
       });
   }
 
@@ -508,7 +521,13 @@ export default class Home extends Component {
                   </TouchableHighlight>
                 </View>
                 <View style={styles.trakingButton}>
-                  
+                  <TouchableHighlight>
+                    <Button
+                      title="Location services"
+                      disabled={!isUserCreated || isActivityPermission}
+                      onPress={this.onRequestActivity.bind(this)}
+                    />
+                  </TouchableHighlight>
                 </View>
               </View>
             </View>
@@ -518,13 +537,7 @@ export default class Home extends Component {
               <Text style={styles.titleLabel}>Android 10 Permission </Text>
               <View style={styles.trakingContainer}>
                 <View style={styles.trakingButton}>
-                <TouchableHighlight>
-                    <Button
-                      title="Location services"
-                      disabled={!isUserCreated || isActivityPermission}
-                      onPress={this.onRequestActivity.bind(this)}
-                    />
-                  </TouchableHighlight>
+                
                 </View>
                 <View style={styles.trakingButton}>
                   <TouchableHighlight>
@@ -595,14 +608,24 @@ export default class Home extends Component {
                 </View>
             )}
 
-        
-
-            <View style={styles.logoutContainer}>
+<View style={styles.logoutContainer}>
               <Text style={styles.titleLabel}>Trip</Text>
                 <View style={styles.logoutContainer}>
                   <TouchableHighlight>
                     <Button
-                      title="Trip"
+                      title="CreateTrip"
+                      disabled={!isUserCreated}
+                      onPress={this.createTrip.bind(this)}
+                    />
+                  </TouchableHighlight>
+                </View>
+            </View>
+
+            <View style={styles.logoutContainer}>
+                <View style={styles.logoutContainer}>
+                  <TouchableHighlight>
+                    <Button
+                      title="Start & End Trip"
                       disabled={!isUserCreated}
                       onPress={() => this.props.navigation.navigate("Trip")}
                     />

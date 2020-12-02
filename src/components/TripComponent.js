@@ -45,7 +45,7 @@ export default class Trip extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.activeTrips(
+    GeoSpark.activeTrips(false,
       success => {
         console.log(success.activeTrips);
         this.setState({
@@ -106,7 +106,7 @@ export default class Trip extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.endTrip(
+    GeoSpark.stopTrip(
       tripId,
       success => {
         console.log(success);
