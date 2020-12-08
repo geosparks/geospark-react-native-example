@@ -24,7 +24,7 @@ import {
   AsyncStorage,
   ScrollView
 } from "react-native";
-import GeoSpark from "react-native-geospark-test";
+import GeoSpark from "react-native-geospark";
 import Toast, { DURATION } from "react-native-easy-toast";
 
 const instructions = Platform.select({
@@ -298,7 +298,6 @@ export default class Home extends Component {
     } else {
       GeoSpark.checkLocationServices(async status => {
         console.log(status);
-
         if (status == "ENABLED") {
           this.setState({
             isMotionService: true
@@ -312,17 +311,17 @@ export default class Home extends Component {
 
   onUpdateLocation() {
     const { platforms } = this.state;
-    if (platforms === "android") {
-    GeoSpark.updateCurrentLocationIos();
+    if (platforms === "ios") {
+    GeoSpark.updateCurrentLocationIos(100);
     }else{
-      GeoSpark.updateCurrentLocation(GeoSpark.DesiredAccuracy.HIGH,300);
+      GeoSpark.updateCurrentLocation(GeoSpark.DesiredAccuracy.HIGH,100);
     }
   }
 
   onGetLocation() {
     const { platforms } = this.state;
-    if (platforms === "android") {
-    GeoSpark.getCurrentLocationIos(
+    if (platforms === "ios") {
+    GeoSpark.getCurrentLocationIos(100,
       status => {
         alert(status.latitude + " , " + status.longitude);
       });
@@ -342,7 +341,7 @@ export default class Home extends Component {
     GeoSpark.checkLocationPermission(async status => {
       console.log(status);
       if (status == "GRANTED") {
-        if (platforms === "android") {
+        if (platforms === "ios") {
           GeoSpark.startTracking(this);
           await AsyncStorage.setItem("geospark_traking", "yes");
           this.setState({isTrakingStarted: true});
