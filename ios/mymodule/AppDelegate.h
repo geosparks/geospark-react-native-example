@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <GeoSpark/GeoSpark.h>
 #import <UserNotifications/UserNotifications.h>
+#import <AWSCore/AWSCore.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,GeoSparkDelegate,UNUserNotificationCenterDelegate>
 

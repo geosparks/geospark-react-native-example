@@ -17,11 +17,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
-  
-  [GeoSpark intialize:@"YOUR-PUBLISHABLE-KEY"];
-  [GeoSpark trackLocationInAppState:[[NSArray alloc] initWithObjects:GSAppState.AlwaysOn, nil]];
-  GeoSpark.delegate = self;
-  
+  [GeoSpark intialize:@"YOUR-PUBLISHABLE-KEY" :nil :nil :nil :nil :AWSRegionUnknown];
+  [GeoSpark setDelegate:self];
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
   [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
@@ -30,7 +27,7 @@
       //      DispatchQueue.main.async(execute: {
       dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-        NSLog( @"Push registration success." );
+        NSLog( @"Push r egistration success." );
         
       });
       //      }
@@ -58,11 +55,6 @@
   return YES;
 }
 
-- (void)didUpdateLocation:(GSLocation * _Nonnull)location {
-  NSLog(@"didUpdate %@",location.userId);
-  NSLog(@"didUpdateLocation %f",location.latitude);
-  NSLog(@"didUpdateLocation %f",location.longitude);
-}
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
@@ -75,8 +67,25 @@
   completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
 }
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
-  [GeoSpark notificationOpenedHandler:response];
   completionHandler();
 }
+
+
+- (void)didUpdateLocation:(GeoSparkLocation *)location{
+  NSLog(@"didUpdateLocation %@",location.userId);
+}
+- (void)didReceiveEvents:(GeoSparkEvents *)events{
+  
+}
+- (void)didReceiveUserLocation:(GeoSparkLocationReceived *)location{
+  
+}
+- (void)didReceiveTripStatus:(TripStatusListener *)tripStatus{
+  
+}
+- (void)onError:(GeoSparkError *)error{
+  
+}
+
 
 @end
