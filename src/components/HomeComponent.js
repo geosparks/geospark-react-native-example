@@ -24,7 +24,7 @@ import {
   AsyncStorage,
   ScrollView
 } from "react-native";
-import GeoSpark from "react-native-geospark";
+import Roam from "roam-reactnative";
 import Toast, { DURATION } from "react-native-easy-toast";
 
 const instructions = Platform.select({
@@ -71,7 +71,7 @@ export default class Home extends Component {
       });
     }
 
-    GeoSpark.checkLocationPermission(
+    Roam.checkLocationPermission(
       status => {
         if (status == "GRANTED") {
           this.setState({
@@ -84,7 +84,7 @@ export default class Home extends Component {
 
     if (plateform === "ios") {
       console.log("IOSSSSSSS");
-      GeoSpark.checkMotionPermission(
+      Roam.checkMotionPermission(
         status => {
           console.log(status);
 
@@ -97,9 +97,8 @@ export default class Home extends Component {
         error => {}
       );
     } else {
-      GeoSpark.disableBatteryOptimization(this);
-
-      GeoSpark.checkMotionPermission(
+      Roam.disableBatteryOptimization(this);
+      Roam.checkMotionPermission(
         status => {
           console.log(status);
           if (status == "ENABLED") {
@@ -111,7 +110,7 @@ export default class Home extends Component {
         error => {}
       );
 
-      GeoSpark.checkBackgroundLocationPermission(
+      Roam.checkBackgroundLocationPermission(
         status => {
           console.log(status);
           if (status == "ENABLED") {
@@ -123,7 +122,7 @@ export default class Home extends Component {
         error => {}
       );
 
-      GeoSpark.checkLocationServices(
+      Roam.checkLocationServices(
         status => {
           console.log(status);
           if (status == "ENABLED") {
@@ -135,7 +134,7 @@ export default class Home extends Component {
         error => {}
       );
 
-      GeoSpark.isBatteryOptimizationEnabled(
+      Roam.isBatteryOptimizationEnabled(
         status => {
           console.log(status);
 
@@ -172,11 +171,11 @@ export default class Home extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.createUser(
+    Roam.createUser(
       this.state.description,
       async success => {
-        GeoSpark.toggleEvents(true,true,true,true,async success => {
-          GeoSpark.toggleListener(true,true, async success => {
+        Roam.toggleEvents(true,true,true,true,async success => {
+          Roam.toggleListener(true,true, async success => {
             this.setState({
               isUserCreated: true,
               isFetching: false
@@ -216,7 +215,7 @@ export default class Home extends Component {
 
   onSetDescription() {
     const { description } = this.state;
-    GeoSpark.setDescription(description);
+    Roam.setDescription(description);
   }
 
   onLoginUser() {
@@ -225,7 +224,7 @@ export default class Home extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.getUser(
+    Roam.getUser(
       userid,
       async success => {
         console.log(success);
@@ -247,37 +246,37 @@ export default class Home extends Component {
   }
 
   onRequestLocation() {
-    GeoSpark.checkLocationPermission(status => {
+    Roam.checkLocationPermission(status => {
       if (status == "GRANTED") {
         this.setState({
           isLocationPermission: true
         });
       } else {
-        GeoSpark.requestLocationPermission();
+        Roam.requestLocationPermission();
       }
     });
   }
 
   onRequestActivity() {
-    GeoSpark.checkLocationServices(status => {
+    Roam.checkLocationServices(status => {
       if (status == "GRANTED") {
         this.setState({
           isMotionService: true
         });
       } else {
-        GeoSpark.requestLocationServices();
+        Roam.requestLocationServices();
       }
     });
   }
 
   onRequestBackgroundPermission() {
-    GeoSpark.checkBackgroundLocationPermission(status => {
+    Roam.checkBackgroundLocationPermission(status => {
       if (status == "GRANTED") {
         this.setState({
           isBackgroundPermission: true
         });
       } else {
-        GeoSpark.requestBackgroundLocationPermission();
+        Roam.requestBackgroundLocationPermission();
       }
     });
   }
@@ -285,25 +284,25 @@ export default class Home extends Component {
   onRequestMotionORService() {
     const { platforms } = this.state;
     if (platforms === "ios") {
-      GeoSpark.checkMotionPermission(async status => {
+      Roam.checkMotionPermission(async status => {
         console.log(status);
         if (status == "GRANTED") {
           this.setState({
             isMotionService: true
           });
         } else {
-          GeoSpark.requestMotionPermission();
+          Roam.requestMotionPermission();
         }
       });
     } else {
-      GeoSpark.checkLocationServices(async status => {
+      Roam.checkLocationServices(async status => {
         console.log(status);
         if (status == "ENABLED") {
           this.setState({
             isMotionService: true
           });
         } else {
-          GeoSpark.requestLocationServices();
+          Roam.requestLocationServices();
         }
       });
     }
@@ -312,21 +311,21 @@ export default class Home extends Component {
   onUpdateLocation() {
     const { platforms } = this.state;
     if (platforms === "ios") {
-    GeoSpark.updateCurrentLocationIos(100);
+    Roam.updateCurrentLocationIos(100);
     }else{
-      GeoSpark.updateCurrentLocation(GeoSpark.DesiredAccuracy.HIGH,100);
+      Roam.updateCurrentLocation(Roam.DesiredAccuracy.HIGH,100);
     }
   }
 
   onGetLocation() {
     const { platforms } = this.state;
     if (platforms === "ios") {
-    GeoSpark.getCurrentLocationIos(100,
+    Roam.getCurrentLocationIos(100,
       status => {
         alert(status.latitude + " , " + status.longitude);
       });
     }else{
-      GeoSpark.getCurrentLocation(GeoSpark.DesiredAccuracy.HIGH,300,
+      Roam.getCurrentLocation(Roam.DesiredAccuracy.HIGH,300,
         status => {
           alert(status.latitude + " , " + status.longitude);
         },error=> {
@@ -338,37 +337,39 @@ export default class Home extends Component {
   onStartTraking() {
     let that = this;
     const { platforms } = this.state;
-    GeoSpark.checkLocationPermission(async status => {
+    Roam.publishAndSave(null);
+    Roam.checkLocationPermission(async status => {
       console.log(status);
+      Roam.publishAndSave(null);
       if (status == "GRANTED") {
-        if (platforms === "ios") {
-          GeoSpark.startTracking(this);
+        if (platforms == "ios") {
+          Roam.startSelfTrackingCustom(true,false,Roam.ActivityType.FITNESS,Roam.DesiredAccuracyIOS.BESTFORNAVIGATION,true,10,40,1);
           await AsyncStorage.setItem("geospark_traking", "yes");
           this.setState({isTrakingStarted: true});
           that.refs.toast.show("Tracking Started Successfully!");
         } else {
-          GeoSpark.checkLocationServices(async status => {
+          Roam.checkLocationServices(async status => {
             console.log(status);
             if (status == "ENABLED") {
-              GeoSpark.startTrackingDistanceInterval(5,120,GeoSpark.DesiredAccuracy.HIGH);
+              Roam.startTrackingDistanceInterval(5,120,Roam.DesiredAccuracy.HIGH);
               this.setState({
                 isTrakingStarted: true
               });
               await AsyncStorage.setItem("geospark_traking", "yes");
               that.refs.toast.show("Tracking Started Successfully!");
             } else {
-              GeoSpark.requestLocationServices();
+              Roam.requestLocationServices();
             }
           });
         }
       } else {
-        GeoSpark.requestLocationPermission();
+        Roam.requestLocationPermission();
       }
     });
   }
 
   async onStopTraking() {
-    GeoSpark.stopTracking(this);
+    Roam.stopTracking(this);
     this.setState({
       isTrakingStarted: false
     });
@@ -381,7 +382,7 @@ export default class Home extends Component {
     this.setState({
       isFetching: true
     });
-   GeoSpark.logout(
+   Roam.logout(
       async success => {
         this.setState({
           isUserCreated: false,
@@ -406,7 +407,7 @@ export default class Home extends Component {
     this.setState({
       isFetching: true
     });
-   GeoSpark.createTrip(false,
+   Roam.createTrip(false,
       async success => {
         this.setState({isFetching: false});
         that.refs.toast.show("Trip created Successfully!");

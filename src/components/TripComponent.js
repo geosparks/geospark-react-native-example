@@ -13,7 +13,7 @@ import {
   ActivityIndicator,
   ScrollView
 } from "react-native";
-import GeoSpark from "react-native-geospark";
+import Roam from "roam-reactnative";
 import Toast, { DURATION } from "react-native-easy-toast";
 import { Header, Button, Input, Card, Divider } from "react-native-elements";
 
@@ -45,7 +45,7 @@ export default class Trip extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.activeTrips(false,
+    Roam.activeTrips(false,
       success => {
         console.log(success.activeTrips);
         this.setState({
@@ -77,7 +77,7 @@ export default class Trip extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.startTrip(
+    Roam.startTrip(
       tripId,
       null,
       success => {
@@ -106,7 +106,7 @@ export default class Trip extends Component {
     this.setState({
       isFetching: true
     });
-    GeoSpark.stopTrip(
+    Roam.stopTrip(
       tripId,
       success => {
         console.log(success);

@@ -136,6 +136,7 @@ android {
 }
 
 dependencies {
+    implementation project(':roam-reactnative')
     implementation project(':react-native-geospark')
     implementation project(':react-native-gesture-handler')
     implementation project(':react-native-vector-icons')

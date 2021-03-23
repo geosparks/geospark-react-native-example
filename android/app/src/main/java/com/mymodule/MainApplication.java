@@ -4,6 +4,7 @@ import android.app.Application;
 
 
 import com.facebook.react.ReactApplication;
+import com.roam.reactnative.RNRoamPackage;
 import com.geospark.reactnative.RNGeoSparkPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new RNRoamPackage(),
             new RNGeoSparkPackage(),
                     new RNGestureHandlerPackage(),
                     new VectorIconsPackage()

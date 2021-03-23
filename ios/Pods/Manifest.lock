@@ -1,0 +1,44 @@
+PODS:
+  - AWSAuthCore (2.23.2):
+    - AWSCore (= 2.23.2)
+  - AWSCognitoIdentityProvider (2.23.2):
+    - AWSCognitoIdentityProviderASF (= 2.23.2)
+    - AWSCore (= 2.23.2)
+  - AWSCognitoIdentityProviderASF (2.23.2)
+  - AWSCore (2.23.2)
+  - AWSIoT (2.23.2):
+    - AWSCore (= 2.23.2)
+  - AWSMobileClient (2.23.2):
+    - AWSAuthCore (= 2.23.2)
+    - AWSCognitoIdentityProvider (= 2.23.2)
+    - AWSCognitoIdentityProviderASF (= 2.23.2)
+    - AWSCore (= 2.23.2)
+  - GeoSpark (3.1.6):
+    - AWSIoT
+    - AWSMobileClient
+
+DEPENDENCIES:
+  - GeoSpark
+
+SPEC REPOS:
+  trunk:
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - AWSIoT
+    - AWSMobileClient
+    - GeoSpark
+
+SPEC CHECKSUMS:
+  AWSAuthCore: 59770d4c2c1b3dbb183b95d1867e3584b4816e54
+  AWSCognitoIdentityProvider: 5bd6988ea7c8f9ee43151e19bdd8e803558ad45f
+  AWSCognitoIdentityProviderASF: 30ccb19228b6e743805bf15a72278ca9f399bc21
+  AWSCore: 70f79e95ee30f8eefa7122391d76ace516778f22
+  AWSIoT: 90114d327cb086c0322a730c6eca7cf2b3f64a16
+  AWSMobileClient: 54fd215e76e34a8edb3cb1199788a69543cebc95
+  GeoSpark: 615d95f0c145de9d0005583cf3a850835ac3db6d
+
+PODFILE CHECKSUM: eb03c944f5fb50ad322c391aafe0b64edc307ead
+
+COCOAPODS: 1.10.1

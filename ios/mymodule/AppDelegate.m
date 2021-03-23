@@ -17,7 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
-  [GeoSpark intialize:@"YOUR-PUBLISHABLE-KEY" :nil :nil :nil :nil :AWSRegionUnknown];
+  [GeoSpark initialize:@"6e6d7628940bfcf95c1ede51767717d70abd5ea45c7da83ebea812dc89ae0499" :nil :nil :nil :nil :AWSRegionUnknown];
   [GeoSpark setDelegate:self];
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
